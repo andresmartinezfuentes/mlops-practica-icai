@@ -9,8 +9,7 @@ import mlflow.sklearn
 import matplotlib.pyplot as plt 
 import seaborn as sns
 import os
-import argparse 
-import dagshub 
+import argparse
 import json 
 
 tracking_uri = os.environ.get("MLFLOW_TRACKING_URI") 
@@ -65,7 +64,7 @@ def train_model(n_estimators):
         plt.ylabel('Valores Reales') 
         plt.savefig('confusion_matrix.png') 
         print("Matriz de confusión guardada como 'confusion_matrix.png'")
-        
+
         mlflow.log_artifact("confusion_matrix.png")
         print("Matriz de confusión registrada como artifact en MLflow") 
         # --- Fin de la sección de Reporte ---
