@@ -10,10 +10,13 @@ import dagshub
 dagshub.init(repo_owner='andresmartinezfuentes', repo_name='mlops-practica-icai', mlflow=True)
 
  
-# Cargar el conjunto de datos 
-iris = datasets.load_iris() 
-X = iris.data 
-y = iris.target 
+try: 
+   iris = pd.read_csv('data/iris_dataset.csv') 
+except FileNotFoundError: 
+   print("Error: El archivo 'data/iris_dataset.csv' no fue encontrado.") 
+
+X = iris.drop('target', axis=1) 
+y = iris['target'] 
  
 # Iniciar un experimento de MLflow 
 with mlflow.start_run(): 
