@@ -64,7 +64,10 @@ def train_model(n_estimators):
         plt.xlabel('Predicciones') 
         plt.ylabel('Valores Reales') 
         plt.savefig('confusion_matrix.png') 
-        print("Matriz de confusión guardada como 'confusion_matrix.png'") 
+        print("Matriz de confusión guardada como 'confusion_matrix.png'")
+        
+        mlflow.log_artifact("confusion_matrix.png")
+        print("Matriz de confusión registrada como artifact en MLflow") 
         # --- Fin de la sección de Reporte ---
         metrics = { 
            "accuracy": accuracy 
