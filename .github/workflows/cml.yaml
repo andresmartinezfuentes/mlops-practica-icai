@@ -1,5 +1,7 @@
 name: MLOps with CML 
+
 on: [push, pull_request] 
+
   jobs: 
     train-and-report: 
       runs-on: ubuntu-latest 
