@@ -48,5 +48,5 @@ jobs:
          MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_API_KEY }} 
          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }} 
       run: |
-        train.py. 
+        python3 train.py  
         dvc repro 
