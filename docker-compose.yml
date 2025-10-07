@@ -1,0 +1,17 @@
+services: 
+  mlops-api: 
+    image: andresmartinezfuentes8/mlops_api 
+    container_name: mlops-_pi 
+    ports: 
+      - "5000:5000" 
+    restart: always 
+  mlops-web: 
+    image: andresmartinezfuentes8/mlops_web 
+    container_name: mlops_web 
+    ports: 
+      - "8501:8501" 
+    environment: 
+      - API_URL=http://mlops-api:5000/predict 
+    depends_on: 
+      - mlops-api 
+    restart: always 
