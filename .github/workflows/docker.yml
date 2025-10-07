@@ -7,14 +7,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
       - name: Build mlops_web Docker image and push
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/mlops_web:latest .
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/mlops_web:latest -f Dockerfile.web .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/mlops_web:latest
       - name: Build mlops_api Docker image and push
         run: |
