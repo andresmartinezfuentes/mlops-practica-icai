@@ -16,6 +16,6 @@ spec:
     spec: 
       containers: 
       - name: mlops-api 
-        image: andresmartinezfuentes8/mlops_web  # <--- Reemplaza con la ruta de tu imagen 
+        image: andresmartinezfuentes8/mlops_api  # <--- Reemplaza con la ruta de tu imagen 
         ports: 
         - containerPort: 5000
