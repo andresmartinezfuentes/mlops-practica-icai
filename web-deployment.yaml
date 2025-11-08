@@ -16,7 +16,7 @@ spec:
     spec: 
       containers: 
       - name: mlops-web 
-        image: gcr.io/mlops-prac-476507/mlops-web:latestb # <--- RUTA DE IMAGEN 
+        image: gcr.io/mlops-prac-476507/mlops-web:latest # <--- RUTA DE IMAGEN 
         ports: 
         - containerPort: 8501 
         env: 
