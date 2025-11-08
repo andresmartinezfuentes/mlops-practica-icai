@@ -106,17 +106,17 @@ jobs:
           pip install -r requirements.txt 
  
       - name: Configure Docker to use GCR 
-        run: gcloud auth configure-docker 
+        run: gcloud auth configure-docker
+
+      - name: Build and Push Docker Image 
+        run: | 
+          docker build -t gcr.io/${{ vars.GCP_PROJECT_ID}}/mlops-api:latest . 
+          docker push gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-api:latest 
 
       - name: Build and Push Web Docker Image 
         run: |  
           docker build -t gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-web:latest -f Dockerfile.web .
           docker push gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-web:latest 
- 
-      - name: Build and Push Docker Image 
-        run: | 
-          docker build -t gcr.io/${{ vars.GCP_PROJECT_ID}}/mlops-api:latest . 
-          docker push gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-api:latest 
  
       - name: Deploy to GKE 
         run: | 
