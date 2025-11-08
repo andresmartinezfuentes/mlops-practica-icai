@@ -110,7 +110,7 @@ jobs:
 
       - name: Build and Push Docker Image 
         run: | 
-          docker build -t gcr.io/${{ vars.GCP_PROJECT_ID}}/mlops-api:latest . 
+          docker build -t gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-api:latest . 
           docker push gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-api:latest 
 
       - name: Build and Push Web Docker Image 
