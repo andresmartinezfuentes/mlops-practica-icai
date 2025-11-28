@@ -1,7 +1,7 @@
 services: 
   mlops-api: 
     image: andresmartinezfuentes8/mlops_api 
-    container_name: mlops-_pi 
+    container_name: mlops-api 
     ports: 
       - "5000:5000" 
     restart: always 
