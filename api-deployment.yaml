@@ -5,7 +5,7 @@ metadata:
   labels: 
     app: mlops-api 
 spec: 
-  replicas: 1 
+  replicas: 1
   selector: 
     matchLabels: 
       app: mlops-api 
@@ -17,5 +17,6 @@ spec:
       containers: 
       - name: mlops-api 
         image: gcr.io/mlops-prac-476507/mlops-api:latest 
-        ports: 
-        - containerPort: 5000
+        ports:
+        - name: metrics
+          containerPort: 5000

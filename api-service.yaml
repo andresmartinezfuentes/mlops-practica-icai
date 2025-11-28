@@ -6,7 +6,8 @@ spec:
   selector: 
     app: mlops-api 
   ports: 
-    - protocol: TCP 
-      port: 5000
+    - name: metrics 
+      protocol: TCP 
+      port: 5000 
       targetPort: 5000 
-  type: ClusterIP
+  type: ClusterIP 
