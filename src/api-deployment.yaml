@@ -12,7 +12,7 @@ spec:
   template: 
     metadata: 
       labels:
-        app: mlops-api -pf
+        app: mlops-api-pf
     spec: 
       containers: 
       - name: mlops-api-pf 
