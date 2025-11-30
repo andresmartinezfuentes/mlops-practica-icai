@@ -20,5 +20,13 @@ spec:
         ports: 
         - containerPort: 8501 
         env: 
-        - name: API_URL 
-          value: http://mlops-api-service:5000/predict # <--- Conexión al servicio interno de la API 
+        - name: API_URL_PREDICT 
+          value: http://mlops-api-pf-service:5000/predict # <--- Conexión al servicio interno de la API 
+        - name: API_URL_XAI 
+          value: http://mlops-api-pf-service:5000/xai_example # <--- Conexión al servicio interno de la API
+        - name: API_URL_EVALUATE 
+          value: http://mlops-api-pf-service:5000/evaluate_model # <--- Conexión al servicio interno de la API
+        - name: API_URL_FEATURES 
+          value: http://mlops-api-pf-service:5000/feature_names # <--- Conexión al servicio interno de la API
+        - name: API_URL_RETRAIN 
+          value: http://mlops-api-pf-service:5000/retrain # <--- Conexión al servicio interno de la API
