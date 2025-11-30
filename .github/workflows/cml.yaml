@@ -126,7 +126,6 @@ jobs:
       - name: Push API Docker Image 
         run: docker push ${{ env.IMAGE_API }} 
          
-      
       - name: Build Web Docker Image 
         id: build_web 
         run: | 
@@ -147,9 +146,9 @@ jobs:
  
       - name: Deploy to GKE 
         run: | 
-          kubectl apply -f api-deployment.yaml 
-          kubectl apply -f api-service.yaml
-          kubectl apply -f web-deployment.yaml 
-          kubectl apply -f web-service.yaml
-          kubectl apply -f pod-monitoring.yaml 
+          kubectl apply -f src/api-deployment.yaml 
+          kubectl apply -f src/api-service.yaml
+          kubectl apply -f src/web-deployment.yaml 
+          kubectl apply -f src/web-service.yaml
+          kubectl apply -f src/pod-monitoring.yaml 
       
