@@ -2,13 +2,13 @@ stages:
  prepare: 
    cmd: echo "Verificando que los datos existen..." 
    deps: 
-     - data/iris_dataset.csv 
+     - data/breast_cancer.csv 
  train: 
    cmd: python3 train.py --n_estimators ${train.n_estimators} 
    deps: 
      - train.py 
      - requirements.txt 
-     - data/iris_dataset.csv 
+     - data/breast_cancer.csv 
    outs: 
      - model.pkl 
      - confusion_matrix.png 
