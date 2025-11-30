@@ -1,12 +1,12 @@
 apiVersion: monitoring.googleapis.com/v1
 kind: PodMonitoring 
 metadata: 
-  name: mlops-api-pod-monitor 
+  name: mlops-api-pf-pod-monitor 
   namespace: default
 spec:  
   selector: 
     matchLabels: 
-      app: mlops-api  
+      app: mlops-api-pf  
   endpoints: 
     - port: metrics 
       path: /metrics 

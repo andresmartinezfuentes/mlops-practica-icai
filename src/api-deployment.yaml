@@ -1,22 +1,22 @@
 apiVersion: apps/v1 
 kind: Deployment 
 metadata: 
-  name: mlops-api-deployment 
+  name: mlops-api-pf-deployment 
   labels: 
-    app: mlops-api 
+    app: mlops-api-pf 
 spec: 
   replicas: 1
   selector: 
     matchLabels: 
-      app: mlops-api 
+      app: mlops-api-pf 
   template: 
     metadata: 
       labels:
-        app: mlops-api 
+        app: mlops-api -pf
     spec: 
       containers: 
-      - name: mlops-api 
-        image: gcr.io/mlops-prac-476507/mlops-api:latest 
+      - name: mlops-api-pf 
+        image: gcr.io/mlops-prac-476507/mlops-api-pf:latest 
         ports:
         - name: metrics
           containerPort: 5000
