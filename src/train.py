@@ -16,8 +16,8 @@ import mlflow.sklearn
 tracking_uri = os.environ.get("MLFLOW_TRACKING_URI") 
 mlflow.set_tracking_uri(tracking_uri) 
 
-MODEL_PATH = '../models/model.pkl'
-CSV_PATH = "../data/breast_cancer.csv"
+MODEL_PATH = './models/model.pkl'
+CSV_PATH = "./data/breast_cancer.csv"
 
 def train_model(n_estimators=100):
     data = pd.read_csv(CSV_PATH)
