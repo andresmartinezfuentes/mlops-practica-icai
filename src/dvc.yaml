@@ -4,7 +4,7 @@ stages:
    deps: 
      - data/breast_cancer.csv 
  train: 
-   cmd: python3 train.py --n_estimators ${train.n_estimators} 
+   cmd: python3 src/train.py --n_estimators ${train.n_estimators} 
    deps: 
      - train.py 
      - requirements.txt 
