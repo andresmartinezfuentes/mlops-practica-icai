@@ -1,6 +1,7 @@
 import joblib
 import numpy as np
 from flask import Flask, request, jsonify, Response
+from flask_cors import CORS
 import shap
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -16,7 +17,7 @@ PREDICTION_COUNTER = Counter(
 ) 
 
 CSV_PATH = "../data/breast_cancer.csv"
-MODEL_PATH = 'models/model.pkl'
+MODEL_PATH = '../models/model.pkl'
 
 feature_names = [
     'mean radius','mean texture','mean perimeter','mean area','mean smoothness',
@@ -26,6 +27,9 @@ feature_names = [
     'worst radius','worst texture','worst perimeter','worst area','worst smoothness',
     'worst compactness','worst concavity','worst concave points','worst symmetry','worst fractal dimension'
 ]
+
+app = Flask(__name__)
+CORS(app)
 
 try: 
    model = joblib.load(MODEL_PATH) 
@@ -54,9 +58,9 @@ def predict():
         pred = model.predict(features)
         prediction_int = int(pred[0])
 
-        species_map = {0: 'Benigno', 1: 'Maligno'} 
-        predicted_species = species_map.get(prediction_int, 'unknown')   
-        PREDICTION_COUNTER.labels(species=predicted_species).inc()
+        type_map = {0: 'Benigno', 1: 'Maligno'} 
+        predicted_type = type_map.get(prediction_int, 'unknown')   
+        PREDICTION_COUNTER.labels(type=predicted_type).inc()
 
         return jsonify({'prediction': prediction_int})
     except Exception as e:
@@ -68,9 +72,8 @@ def features_ranges():
         body = request.get_json(force=True)
         feature_names = body.get('feature_names') or feature_names
         data = pd.read_csv(CSV_PATH)
-        feature_names = [c for c in data.columns if c != "target"]
-        X = data[feature_names].copy()
-        X = X.to_numpy()
+        all_feature_names = [c for c in data.columns if c != "target"]
+        X = data[all_feature_names].copy()
         ranges = {}
         for col in feature_names:
             ranges[col] = {
@@ -123,9 +126,9 @@ def xai_example():
         prediction = model.predict(features)
         pred_class = int(prediction[0])
 
-        species_map = {0: 'Benigno', 1: 'Maligno'} 
-        predicted_species = species_map.get(pred_class, 'unknown')   
-        PREDICTION_COUNTER.labels(species=predicted_species).inc()
+        type_map = {0: 'Benigno', 1: 'Maligno'} 
+        predicted_type = type_map.get(pred_class, 'unknown')   
+        PREDICTION_COUNTER.labels(type=predicted_type).inc()
 
         shap_values = explainer.shap_values(features)
 

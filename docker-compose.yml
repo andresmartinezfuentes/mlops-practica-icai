@@ -1,7 +1,7 @@
 services: 
-  mlops-api: 
+  mlops-api-pf: 
     image: andresmartinezfuentes8/mlops_api 
-    container_name: mlops-api 
+    container_name: mlops-api-pf
     ports: 
       - "5000:5000" 
     restart: always 
@@ -11,15 +11,15 @@ services:
     ports: 
       - "8501:8501" 
     environment: 
-      - API_URL=http://mlops-api:5000/predict 
+      - API_URL=http://mlops-api-pf:5000/predict 
     depends_on: 
-      - mlops-api 
+      - mlops-api-pf 
     restart: always
   prometheus: 
     image: prom/prometheus:latest 
     container_name: prometheus 
     volumes: 
-      - ./prometheus.yaml:/etc/prometheus/prometheus.yml 
+      - ./src/prometheus.yaml:/etc/prometheus/prometheus.yml 
     ports: 
       - "9090:9090" 
     restart: unless-stopped

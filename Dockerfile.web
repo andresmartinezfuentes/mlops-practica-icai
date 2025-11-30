@@ -9,10 +9,14 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt 
  
 # Copiar el script de la aplicación web 
-COPY src/app_web.py . 
+COPY src/app_web.py ./src/app_web.py
+COPY src/pages/ ./src/pages/
+COPY data/breast_cancer.csv ./data/breast_cancer.csv
  
 # Exponer el puerto en el que se ejecutará la API 
 EXPOSE 8501 
+
+WORKDIR /app/src
  
 # Comando para ejecutar la API cuando se inicie el contenedor 
 CMD ["streamlit", "run", "app_web.py"] 

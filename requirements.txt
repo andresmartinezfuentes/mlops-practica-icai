@@ -13,3 +13,4 @@ setuptools==70.0.0
 prometheus-client
 shap
 requests
+flask_cors

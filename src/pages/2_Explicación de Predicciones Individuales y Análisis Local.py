@@ -9,11 +9,11 @@ st.set_page_config(page_title='XAI Interactive — Breast Cancer', layout='wide'
 st.title('XAI Interactivo: Entrena, explica y experimenta con features')
 
 # Endpoint config
-API_XAI = os.environ.get('API_URL_XAI', 'http://mlops-api:5000/xai_example')
-API_RANGES = os.environ.get('API_URL_FEATURE_RANGES', 'http://mlops-api:5000/features_ranges')
-API_FEATURES = os.environ.get('API_URL_FEATURES', 'http://mlops-api:5000/feature_names')
-API_RETRAIN = os.environ.get('API_URL_RETRAIN', 'http://mlops-api:5000/retrain')
-API_PREDICT = os.environ.get('API_URL_PREDICT', 'http://mlops-api:5000/predict')
+API_XAI = os.environ.get('API_URL_XAI', 'http://mlops-api-pf:5000/xai_example')
+API_RANGES = os.environ.get('API_URL_FEATURE_RANGES', 'http://mlops-api-pf:5000/features_ranges')
+API_FEATURES = os.environ.get('API_URL_FEATURES', 'http://mlops-api-pf:5000/feature_names')
+API_RETRAIN = os.environ.get('API_URL_RETRAIN', 'http://mlops-api-pf:5000/retrain')
+API_PREDICT = os.environ.get('API_URL_PREDICT', 'http://mlops-api-pf:5000/predict')
 
 
 FEATURE_NAMES = [

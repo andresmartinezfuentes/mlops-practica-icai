@@ -8,11 +8,13 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt 
  
 # Copiar los scripts de la aplicación y el modelo 
-COPY src/app.py . 
-COPY models/model.pkl . 
+COPY src/app.py ./src/app.py
+COPY models/model.pkl ./models/model.pkl
+COPY data/breast_cancer.csv ./data/breast_cancer.csv
  
 # Exponer el puerto en el que se ejecutará la aplicación 
 EXPOSE 5000 
- 
+
+WORKDIR /app/src
 # Comando para ejecutar la aplicación cuando se inicie el contenedor 
 CMD ["python", "app.py"] 

@@ -15,8 +15,7 @@ CSV_PATH = "../data/breast_cancer.csv"
 data = pd.read_csv(CSV_PATH)
 feature_names = [c for c in data.columns if c != "target"]
 X = data[feature_names].copy()
-X = X.to_numpy()
-y = data["target"].to_numpy()
+y = data["target"]
 
 st.write("Este dataset proviene de la biblioteca sklearn y contiene datos para diagnosticar cáncer de mama.")
 st.write(f"El dataset tiene **{X.shape[0]} muestras** y **{X.shape[1]} características**.")
