@@ -30,3 +30,5 @@ spec:
           value: http://mlops-api-pf-service:5000/feature_names # <--- Conexión al servicio interno de la API
         - name: API_URL_RETRAIN 
           value: http://mlops-api-pf-service:5000/retrain # <--- Conexión al servicio interno de la API
+        - name: API_URL_FEATURE_RANGES 
+          value: http://mlops-api-pf-service:5000/features_ranges # <--- Conexión al servicio interno de la API
